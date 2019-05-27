@@ -55,12 +55,6 @@ class App extends Component {
   render() {
     const { searchTerm, result } = this.state;
 
-    if (!result) { return null; }
-
-
-    console.log("result");
-    console.log(result);
-
     return (
       <div className="page">
         <div className="interactions">
@@ -68,11 +62,13 @@ class App extends Component {
             value={searchTerm}
             onChange={this.onSearchChange}
           >Search</Search>
-          <Table
-            list={result.hits}
-            pattern={searchTerm}
-            onDismiss={this.onDismiss}
-          />
+            {result &&
+                <Table
+                    list={result.hits}
+                    pattern={searchTerm}
+                    onDismiss={this.onDismiss}
+                />
+            }
         </div>
       </div>
     );
