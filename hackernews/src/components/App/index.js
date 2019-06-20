@@ -200,3 +200,9 @@ const Button = ({ onClick, className= '', children }) => {
 };
 
 export default Index;
+
+export {
+    Button,
+    Search,
+    Table,
+};
