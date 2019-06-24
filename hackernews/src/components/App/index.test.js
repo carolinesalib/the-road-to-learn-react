@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
+import Enzyme, { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Index, { Search, Button, Table } from '.';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Index', () => {
 
@@ -55,6 +59,15 @@ describe('Button', () => {
     expect(tree).toMatchSnapshot();
   });
 
+
+  it('renders a button', () => {
+    const element = shallow(
+        <Button className="test-button" />
+    );
+
+    expect(element.find('.test-button').length).toBe(1);
+  });
+
 });
 
 describe('Table', () => {
@@ -78,6 +91,14 @@ describe('Table', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('shows two items in list', () => {
+    const element = shallow(
+        <Table { ...props } />
+    );
+
+    expect(element.find('.table-row').length).toBe(2);
   });
 
 });
