@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import './index.css';
 
 import {
@@ -185,9 +186,14 @@ const Table = ({ list, onDismiss }) => {
       })}
     </div>
   );
+
+  Table.propTypes = {
+    list: PropTypes.array.isRequired,
+    onDismiss: PropTypes.func.isRequired
+  };
 };
 
-const Button = ({ onClick, className= '', children }) => {
+const Button = ({ onClick, className, children }) => {
   return (
     <button
       onClick={onClick}
@@ -197,6 +203,16 @@ const Button = ({ onClick, className= '', children }) => {
     {children}
     </button>
   );
+
+  Button.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    className: PropTypes.string,
+    children: PropTypes.node.isRequired,
+  };
+
+  Button.defaultProps = {
+    className: ''
+  };
 };
 
 export default Index;

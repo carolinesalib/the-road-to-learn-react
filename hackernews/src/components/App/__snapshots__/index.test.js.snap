@@ -2,7 +2,6 @@
 
 exports[`Button has a valid snapshot 1`] = `
 <button
-  className=""
   type="button"
 >
   Give Me More
@@ -37,7 +36,6 @@ exports[`Index has a valid snapshot 1`] = `
       className="interactions"
     >
       <button
-        className=""
         onClick={[Function]}
         type="button"
       >

@@ -47,7 +47,7 @@ describe('Button', () => {
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Button>Give Me More</Button>, div);
+    ReactDOM.render(<Button onClick={() => {}}>Give Me More</Button>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 
@@ -62,7 +62,7 @@ describe('Button', () => {
 
   it('renders a button', () => {
     const element = shallow(
-        <Button className="test-button" />
+        <Button onClick={() => {}} className="test-button">Text</Button>
     );
 
     expect(element.find('.test-button').length).toBe(1);
@@ -77,6 +77,7 @@ describe('Table', () => {
       { title: '1', author: '1', num_comments: 1, points: 2, objectID: 'y' },
       { title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z' },
     ],
+    onDismiss: () => {}
   };
 
   it('renders without crashing', () => {
