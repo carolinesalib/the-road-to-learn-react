@@ -143,19 +143,33 @@ class Index extends Component {
   }
 }
 
-const Search = ({ value, onChange, onSubmit, children }) => {
-  return (
-    <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        onChange={onChange}
-        value={value}
-      />
-      <button type="submit">
-        {children}
-      </button>
-    </form>
-  );
+class Search extends Component {
+  componentDidMount() {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
+  render() {
+    const { value, onChange, onSubmit, children } = this.props;
+
+    // I can use this variable if makes sense. It contains my DOM element if I need this anti-pattern
+    // let input;
+
+    return (
+        <form onSubmit={onSubmit}>
+          <input
+              type="text"
+              onChange={onChange}
+              value={value}
+              ref={el => this.input = el} // refers DOM element
+          />
+          <button type="submit">
+            {children}
+          </button>
+        </form>
+    );
+  }
 };
 
 const Table = ({ list, onDismiss }) => {
